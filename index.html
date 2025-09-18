@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artlib – Kennisbank</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fafafa; color:#333; }
+    header { text-align:center; padding:2em 1em; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    h1 { margin:0; font-size:2em; }
+    .search-box { margin:2em auto; max-width:700px; text-align:center; }
+    .search-box input { width:100%; padding:0.9em; font-size:1.05em; border:1px solid #ccc; border-radius:8px; }
+    #results { max-width:700px; margin:1em auto; padding:0; list-style:none; text-align:left; }
+    #results li { background:#fff; margin:0.7em 0; padding:0.9em; border-radius:8px; border:1px solid #ddd; cursor:pointer; }
+    #results li:hover { background:#f0f8ff; }
+    #results strong { background:yellow; }
+    #results p { margin:0.3em 0 0; font-size:0.9em; color:#555; }
+    #no-results { text-align:center; margin-top:1em; color:#888; }
+    main { max-width:900px; margin:2em auto; padding:0 1em; }
+    section { background:#fff; padding:1.5em; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+    .cats a { display:inline-block; margin:.3em .4em; padding:.5em .8em; border:1px solid #ddd; border-radius:999px; background:#fff; color:#0073e6; text-decoration:none; }
+    .cats a:hover { background:#f0f8ff; }
+    footer { background:#fff; border-top:1px solid #ddd; padding:1em; text-align:center; }
+    footer a { margin:0 0.5em; text-decoration:none; color:#0073e6; }
+    footer a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Artlib – Kennisbank</h1>
+    <p>Zoek of kies een hoofdstuk.</p>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Zoek in de handleiding...">
+    <ul id="results"></ul>
+    <p id="no-results" style="display:none;">Geen resultaten gevonden</p>
+  </div>
+
+  <main>
+    <section>
+      <h2>Hoofdstukken</h2>
+      <p class="cats">
+        <a href="intro.html">Introductie</a>
+        <a href="app.html">De Artlib App</a>
+        <a href="portal.html">De Portal</a>
+        <a href="library.html">Art Library</a>
+        <a href="media.html">Media Library</a>
+        <a href="projects.html">Projecten</a>
+        <a href="exhibition.html">Exhibition instellingen</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Artlib</p>
+  </footer>
+
+  <script>
+    const chapters = [
+      {
+        title: "Introductie",
+        url: "intro.html",
+        text: `Artlib is een kunstplatform dat kunst toegankelijk maakt voor iedereen – binnen én buiten het museum.
+               De Artlib app maakt gebruik van augmented reality. Extra informatie kan alle zintuigen prikkelen: zien, lezen, luisteren en 3D-objecten.
+               Het platform bestaat uit: de gratis Artlib app en de portal (my.artlib.nl).`
+      },
+      {
+        title: "De Artlib App",
+        url: "app.html",
+        text: `De app is gratis te downloaden voor Android en iOS (minimaal iPhone X, Galaxy Note 8).
+               Bij eerste gebruik vraagt de app toestemming voor camera, locatie en notificaties.
+               Navigatie: musea selecteren, projecten openen, info-knop naar museumsite, instellingen (taalkeuze),
+               projecten downloaden (ook offline beschikbaar).`
+      },
+      {
+        title: "De Portal: my.artlib.nl",
+        url: "portal.html",
+        text: `De ervaringen in de Artlib app worden gemaakt in de portal: my.artlib.nl.
+               Hier wordt de kunstcollectie beheerd, media gekoppeld en projecten ingericht.
+               Inloggen met geverifieerd museum e-mailadres.
+               Profielinformatie: museumnaam, logo, coverafbeelding, GPS-locatie.
+               Meertaligheid: talen toevoegen onder Preferences > Locale > Languages.
+               Automatisch collectiedata importeren (bijv. vanuit Axiell met Excel-export).`
+      },
+      {
+        title: "Art Library",
+        url: "library.html",
+        text: `De Art Library bevat alle kunstwerken.
+               Kunstobjecten kunnen handmatig toegevoegd worden of via import.
+               Vereisten: JPEG-afbeelding (max. 5 MB), bij sculpturen meerdere perspectieven,
+               metadata (titel, maker, jaar), afmetingen, GPS-coördinaten.`
+      },
+      {
+        title: "Media Library",
+        url: "media.html",
+        text: `De Media Library bevat alle mediatypes die aan kunstwerken gekoppeld kunnen worden.
+               Ondersteunde mediatypes:
+               Audio (.mp3, max. 25 MB) – iconen op kunstwerk, autoplay/handmatig.
+               Video (.mp4, max. 250 MB) – paneel of fullscreen.
+               Afbeeldingen (.jpg, max. 5 MB) – in paneel.
+               Tekst – schermvullend of paneel.
+               Animatie (PNG sequence .ZIP, max. 50 MB) – overlay met transparantie.
+               3D (.GLB .ZIP) – op marker of POI.
+               Call To Action – externe link.
+               Object info – achtergrondinformatie/rechten.`
+      },
+      {
+        title: "Projecten",
+        url: "projects.html",
+        text: `Projecten zijn de kern van Artlib. Drie projecttypes:
+               Exhibition – scannen van kunstwerken met camera, virtuele panelen met media.
+               Depot – depotcollecties beschikbaar in AR, schaalbaar met marker, audio kan automatisch afspelen.
+               Tour – GPS-gebaseerde kunstroutes buiten, met hotspots en media (tekst, audio, 3D).
+               Basisinstellingen: naam, datum, thumbnail, titel, URL, talen, zichtbaarheid.`
+      },
+      {
+        title: "Exhibition instellingen",
+        url: "exhibition.html",
+        text: `Projectinstellingen:
+               Naam, datum (optioneel), thumbnail (JPG 9×16), titel, URL naar museumsite, talen, zichtbaarheid.
+               Kunstwerken toevoegen uit de Library, media koppelen via de Media Editor.
+               Weergave instellen: zijpaneel, fullscreen, autoplay, positie op kunstwerk.
+               Media beschikbaarheidstabel: Audio, Video, CTA, Image, Tekst, Animatie, 3D, Object info.`
+      }
+    ];
+
+    const input = document.getElementById('search');
+    const results = document.getElementById('results');
+    const nores = document.getElementById('no-results');
+
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase();
+      results.innerHTML = "";
+      nores.style.display = "none";
+      if (!q) return;
+
+      const matches = chapters.filter(c =>
+        c.title.toLowerCase().includes(q) ||
+        c.text.toLowerCase().includes(q)
+      );
+
+      if (matches.length === 0) {
+        nores.style.display = "block";
+      } else {
+        matches.forEach(c => {
+          const idx = c.text.toLowerCase().indexOf(q);
+          let snippet = "";
+          if (idx >= 0) {
+            const start = Math.max(0, idx - 40);
+            const end = Math.min(c.text.length, idx + 60);
+            snippet = c.text.substring(start, end);
+            const regex = new RegExp(`(${q})`, "gi");
+            snippet = snippet.replace(regex, "<strong>$1</strong>");
+          }
+          const li = document.createElement("li");
+          li.innerHTML = `<div><b>${c.title}</b></div><p>...${snippet}...</p>`;
+          li.addEventListener('click', () => window.location.href = c.url);
+          results.appendChild(li);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
